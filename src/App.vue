@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
+  <div id="app" :class="typeof weather.main != 'undefined' ? (weather.main.temp > 30 ? 'hot' : (weather.main.temp > 20 ? 'warm' : 'cold')) : ''">
     <main>
       <div class="search-box">
         <input 
@@ -7,7 +7,7 @@
           name="search"
           id="search" 
           class="search-bar" 
-          placeholder="Pesquisar um local..."
+          placeholder="Tente por 'Rio de Janeiro'"
           v-model="query"
           @keypress="fetchWeather" />
       </div>
@@ -67,6 +67,8 @@ export default {
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -78,7 +80,7 @@ body {
 }
 
 #app {
-  background-image: url('./assets/cold-bg.jpg');
+  background-image: url('./assets/standard-bg.png');
   background-size: cover;
   background-position: bottom;
   transition: 0.4s;
@@ -170,5 +172,22 @@ main {
   font-weight: 700;
   font-style: italic;
   text-shadow: 3px 6px rgba(0, 0, 0, .25);
+}
+
+@media (min-width: 767px) {
+  
+#app.cold {
+  background-image: url(./assets/cold-bg.jpg);
+}
+
+#app.warm {
+  background-image: url(./assets/warm-bg.jpg);
+  background-size: 100% 100%;
+}
+
+#app.hot {
+  background-image: url(./assets/hot-bg.jpg);
+  background-size: 100% 100%;
+}
 }
 </style>
