@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       api_key: '2612a34bc18c93e58375d1a90af23bec',
-      url_base: "http://api.openweathermap.org/data/2.5/weather?q=",
+      url_base: "https://api.openweathermap.org/data/2.5/weather?q=",
       query: '',
       weather: {}
     }
